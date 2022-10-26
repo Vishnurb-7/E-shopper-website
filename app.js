@@ -3,6 +3,7 @@ const app = express();
 const port = 5000;
 const path = require("path");
 const adminRouter = require("./routes/admin");
+const userRouter =require('./routes/user')
 const db = require("./config/connection");
 const expressLayouts = require("express-ejs-layouts");
 
@@ -20,6 +21,8 @@ db.connect((err) => {
   else console.log("Database Connected successfully");
 });
 
+
+app.use('/',userRouter)
 app.use("/admin", adminRouter);
 
 app.listen(port, () => {

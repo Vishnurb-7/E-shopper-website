@@ -1,14 +1,14 @@
 const { response } = require('express')
 const adminLogin=require('../Model/admin_helper')
 const adminLoginPage=(req,res)=>{
-    res.render('admin/adminLogin',{admin:false})
+    res.render('admin/adminLogin',{admin:false,user:false})
 }
 const adminLoginAction=(req,res)=>{
     console.log(req.body)
     adminLogin.adminDoLogin(req.body).then((response)=>{
         if(response.status)
         {
-            res.render('admin/adminHome',{admin:true,title:'ADMINHOME'})
+            res.render('admin/adminHome',{admin:true,user:false,title:'ADMINHOME'})
         }else{
             res.redirect('/admin')
         }      
